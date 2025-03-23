@@ -26,9 +26,17 @@ import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 /* REDUX PERSISTENCE */
 const createNoopStorage = () => {
   return {
-    getItem: async (_key: string): Promise<null> => null,
-    setItem: async (_key: string, value: string): Promise<string> => value,
-    removeItem: async (_key: string): Promise<void> => {},
+    getItem: async (_key: string): Promise<null> => {
+      void _key; // Explicitly ignore the unused variable
+      return null;
+    },
+    setItem: async (_key: string, value: string): Promise<string> => {
+      void _key;
+      return value;
+    },
+    removeItem: async (_key: string): Promise<void> => {
+      void _key;
+    },
   };
 };
 
